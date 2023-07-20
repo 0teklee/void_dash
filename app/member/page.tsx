@@ -31,7 +31,7 @@ const Page = () => {
   const login = async () => {
     await signIn("google", {
       redirect: true,
-      callbackUrl: `/`,
+      callbackUrl: `${process.env.URL}/`,
     });
   };
 
