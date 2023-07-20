@@ -20,7 +20,7 @@ export async function GET(req: Request) {
       { status: 200, statusText: "OK" },
     );
   } catch (err) {
-    console.log("list.ts error: ", err);
+    console.log("main page list.ts error: ", err);
     return new NextResponse(JSON.stringify({ message: "fail" }), {
       status: 500,
       statusText: "Internal Server Error",
