@@ -1,21 +1,23 @@
 import Image from "next/image";
 import { hundredEye, twoSkulls } from "@/libs/ascii";
+import ListItem from "@/components/modules/ListItem";
+import { IPostData } from "@/libs/types";
 import Spinner from "@/components/modules/Spinner";
 import { Suspense } from "react";
 import Ascii from "@/components/modules/Ascii";
 import Link from "next/link";
 
-// const getList = async () => {
-//   const res = await fetch(`${process.env.URL}/api/list`, {
-//     method: "GET",
-//   });
-//   const data = await res.json();
-//
-//   return data;
-// };
+const getList = async () => {
+  const res = await fetch(`${process.env.URL}/api/list`, {
+    method: "GET",
+  });
+  const data = await res.json();
+
+  return data;
+};
 
 const Home = async () => {
-  // const data = await getList();
+  const data = await getList();
 
   return (
     <main className={`w-full h-screen bg-black  p-9 md:p-10`}>
@@ -50,12 +52,12 @@ const Home = async () => {
               priority
             />
           </Link>
-          {/*{!!data &&*/}
-          {/*  !!data?.posts &&*/}
-          {/*  data.posts.length > 0 &&*/}
-          {/*  data.posts.map((item: IPostData, index: number) => {*/}
-          {/*    return <ListItem key={`list_item_${index}`} data={item} />;*/}
-          {/*  })}*/}
+          {!!data &&
+            !!data?.posts &&
+            data.posts.length > 0 &&
+            data.posts.map((item: IPostData, index: number) => {
+              return <ListItem key={`list_item_${index}`} data={item} />;
+            })}
           <Ascii text={twoSkulls} />
         </section>
       </Suspense>
