@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Post {
+  id         Int       @id @default(autoincrement())
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  title      String
+  content    String?   @db.VarChar(16000)
+  category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId Int?
+  published  Boolean   @default(false)
+  private    Boolean   @default(false)
+  viewCount  Int       @default(0)
+  Comment    Comment[]
+}
+
+model Category {
+  id    Int    @id @default(autoincrement())
+  name  String
+  posts Post[]
+}
+
+model Guest {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  name      String
+  email     String?   @unique
+  published Boolean   @default(false)
+  Comment   Comment[]
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  nickname  String   @db.VarChar(12)
+  content   String   @db.VarChar(300)
+  guestId   Int?
+  guest     Guest?   @relation(fields: [guestId], references: [id])
+  isPrivate Boolean  @default(false)
+  postId    Int
+  post      Post?    @relation(fields: [postId], references: [id])
+}
