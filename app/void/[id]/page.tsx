@@ -25,7 +25,7 @@ const DetailPage = async (props: {
     <>
       <Header />
       <main>
-        <DetailTemplate data={data} searchParams={postId} />
+        {!!data && <DetailTemplate data={data} searchParams={postId} />}
       </main>
     </>
   );
