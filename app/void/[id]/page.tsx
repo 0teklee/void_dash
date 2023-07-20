@@ -7,9 +7,9 @@ import { notFound } from "next/navigation";
 
 const getData = async (postId: string) => {
   const res = await fetch(`${process.env.URL}/api/void/${postId}`);
-  const data = await res.json();
+  const resData = await res.json();
 
-  return data;
+  return resData;
 };
 
 const DetailPage = async (props: {
@@ -17,7 +17,11 @@ const DetailPage = async (props: {
     id: string;
   };
 }) => {
-  const postId = props?.params?.id as string;
+  if (!props?.params?.id) {
+    return null;
+  }
+
+  const postId = props.params.id as string;
 
   const data = await getData(postId);
 
