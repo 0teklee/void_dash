@@ -15,7 +15,6 @@ const DetailTemplate = ({
   data: IPostDataResponse;
   searchParams: string;
 }) => {
-  const { id, content, createdAt, title, isPrivate, viewCount } = data.post;
   const queryClient = new QueryClient();
   const router = useRouter();
 
@@ -27,11 +26,17 @@ const DetailTemplate = ({
     <div
       className={`flex flex-col items-start md:items-start mt-12 mx-auto p-9 md:p-10 text-primary gap-9`}
     >
-      <div>
-        <h1 className={`text-5xl font-semibold`}>{title}</h1>
-        <p className={`text-sm font-normal`}>{createdAt}</p>
-      </div>
-      <div className={`mb-32 text-xl break-all`}>{htmlParser(content)}</div>
+      {!!data && !!data.post && (
+        <>
+          <div>
+            <h1 className={`text-5xl font-semibold`}>{data.post.title}</h1>
+            <p className={`text-sm font-normal`}>{data.post.createdAt}</p>
+          </div>
+          <div className={`mb-32 text-xl break-all`}>
+            {htmlParser(data.post.content)}
+          </div>
+        </>
+      )}
       <QueryClientProvider client={queryClient}>
         <SessionProvider>
           <CommentContainer searchParams={searchParams} />
