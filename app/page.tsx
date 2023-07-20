@@ -8,7 +8,7 @@ import Ascii from "@/components/modules/Ascii";
 import Link from "next/link";
 
 const getList = async () => {
-  const res = await fetch(`${process.env.URL}/api/list`, {
+  const res = await fetch(`/api/list`, {
     method: "GET",
   });
   const data = await res.json();

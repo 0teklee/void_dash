@@ -1,12 +1,11 @@
 import React from "react";
 import DetailTemplate from "@/components/templates/DetailTemplate";
-import process from "process";
 import Header from "@/components/modules/Header";
 import { getContentImg } from "@/utils/formatter";
 import { notFound } from "next/navigation";
 
 const getData = async (postId: string) => {
-  const res = await fetch(`${process.env.URL}/api/void/${postId}`);
+  const res = await fetch(`/api/void/${postId}`);
   const data = await res.json();
 
   return data;
@@ -34,7 +33,7 @@ const DetailPage = async (props: {
 export default DetailPage;
 
 export async function generateStaticParams() {
-  const { posts } = await fetch(`${process.env.URL}/api/id-list`, {
+  const { posts } = await fetch(`/api/id-list`, {
     next: { revalidate: 15 },
   }).then((res) => res.json());
 
