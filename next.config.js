@@ -7,6 +7,10 @@ const nextConfig = {
     domains: ["res.cloudinary.com"],
     minimumCacheTTL: 300000,
   },
+  webpack: (config) => {
+    config.externals = [...config.externals, "canvas", "jsdom"];
+    return config;
+  },
   reactStrictMode: false,
   env: {
     DATABASE_URL: process.env.DATABASE_URL,
