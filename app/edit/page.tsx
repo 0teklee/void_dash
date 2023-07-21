@@ -22,7 +22,7 @@ const QuillWrapper = dynamic(
 
 const Page = () => {
   const getEditList = async () => {
-    const res = await fetch(`${process.env.URL}/api/edit`, {
+    const res = await fetch(`${process.env.NEXT_APP_URL}/api/edit`, {
       method: "GET",
     });
     const data = await res.json();
