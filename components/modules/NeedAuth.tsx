@@ -1,5 +1,5 @@
 import React from "react";
-import { shots } from "@/libs/ascii";
+import { shots } from "@/libs/client/ascii";
 
 const NeedAuth = () => {
   return (

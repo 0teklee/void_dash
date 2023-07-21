@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useSession } from "next-auth/react";
-import htmlParser from "@/libs/utils";
+import htmlParser from "@/libs/client/utils";
 import { IExtendedSession } from "@/components/modules/CommentContainer";
 
 interface ICommentSectionProps {

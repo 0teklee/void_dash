@@ -3,17 +3,17 @@
 import React from "react";
 import Image from "next/image";
 import { getContentImg } from "@/utils/formatter";
-import htmlParser from "@/libs/utils";
+import htmlParser from "@/libs/client/utils";
 import { useRouter } from "next/navigation";
 import Ascii from "@/components/modules/Ascii";
-import { keys } from "@/libs/ascii";
+import { keys } from "@/libs/client/ascii";
 
 interface IPostData {
   id: number;
   title: string;
   content: string;
-  createdAt: string;
-  category: string;
+  createdAt: Date | string;
+  category?: string;
   private: boolean;
   viewCount: number;
 }
@@ -32,6 +32,7 @@ const ListItem = ({ data }: { data: IPostData }) => {
   const hasImage = content.includes("cloudinary" || "img");
   const imgString = getContentImg(content);
   const router = useRouter();
+  const createdAtString = new Date(createdAt).toDateString();
 
   return (
     <div
@@ -50,7 +51,7 @@ const ListItem = ({ data }: { data: IPostData }) => {
             fill={true}
             objectFit={`cover`}
           />
-          <p className={`text-xs font-light text-[#fff]`}>{createdAt}</p>
+          <p className={`text-xs font-light text-[#fff]`}>{createdAtString}</p>
           <p className={`text-base font-normal`}>{title}</p>
         </div>
       )}
@@ -62,7 +63,7 @@ const ListItem = ({ data }: { data: IPostData }) => {
           }}
         >
           <h2 className={`text-4xl font-medium md:text-3xl`}>{title}</h2>
-          <p className={`text-xs font-light text-primary`}>{createdAt}</p>
+          <p className={`text-xs font-light text-primary`}>{createdAtString}</p>
           <div className={`text-md font-normal`}>{htmlParser(content)}</div>
         </div>
       )}

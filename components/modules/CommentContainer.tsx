@@ -4,7 +4,7 @@ import React, { Suspense } from "react";
 import { useSession } from "next-auth/react";
 import CommentInput from "@/components/modules/CommentInput";
 import { useQuery } from "react-query";
-import { ICommentDataResponse } from "@/libs/types";
+import { ICommentDataResponse } from "@/libs/client/types";
 import CommentSection from "@/components/modules/CommentSection";
 import { Session } from "next-auth";
 import Spinner from "@/components/modules/Spinner";

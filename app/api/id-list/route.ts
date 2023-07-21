@@ -8,7 +8,6 @@ export async function GET() {
         id: true,
       },
     });
-    console.log("1 id-list.ts: ", posts);
 
     const retunPosts = posts.map((post) => {
       return {
