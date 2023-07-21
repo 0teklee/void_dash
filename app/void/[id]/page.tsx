@@ -1,16 +1,10 @@
 import React from "react";
-import DetailTemplate from "@/components/templates/DetailTemplate";
-import process from "process";
 import Header from "@/components/modules/Header";
-import { getContentImg } from "@/utils/formatter";
+import DetailTemplate from "@/components/templates/DetailTemplate";
+import { getAllPostId } from "@/libs/server/listApi";
 import { notFound } from "next/navigation";
-
-const getData = async (postId: string) => {
-  const res = await fetch(`${process.env.URL}/api/void/${postId}`);
-  const resData = await res.json();
-
-  return resData;
-};
+import { getContentImg } from "@/utils/formatter";
+import { getPostData } from "@/libs/server/detailApi";
 
 const Page = async (props: {
   params: {
@@ -22,44 +16,42 @@ const Page = async (props: {
   }
 
   const postId = props.params.id as string;
-
-  const data = await getData(postId);
+  const data = await getPostData(Number(postId));
 
   return (
     <>
       <Header />
-      <main>
-        {!!data && <DetailTemplate data={data} searchParams={postId} />}
-      </main>
+      <main>{<DetailTemplate data={data} searchParams={postId} />}</main>
     </>
   );
 };
 
 export default Page;
 
-export async function generateStaticParams() {
-  const { posts } = await fetch(`${process.env.URL}/api/id-list`, {
-    next: { revalidate: 15 },
-  }).then((res) => res.json());
+export const generateStaticParams = async () => {
+  const { postsId } = await getAllPostId();
+  const posts = postsId.map((item) => ({
+    id: item.id.toString(),
+  }));
 
   return posts;
-}
+};
 
 export async function generateMetadata(props: { params: { id: string } }) {
-  const data = await getData(props?.params?.id);
-  if (!data || data.errorCode === 404) {
-    notFound();
+  const data = await getPostData(Number(props?.params?.id));
+  if (!data) {
+    return notFound();
   }
 
-  const ImageSrc = getContentImg(data?.content) ?? `/sign.jpegs`;
+  const ImageSrc = getContentImg(data?.post.content) ?? `/sign.jpegs`;
   const SEOImage = ImageSrc?.substring(1, ImageSrc.length);
 
   return {
-    title: data.title,
-    description: data.description,
+    title: data.post.title,
+    description: data.post.content,
     openGraph: {
-      title: data.title,
-      description: data.content,
+      title: data.post.title,
+      description: data.post.content,
       images: SEOImage,
     },
   };
