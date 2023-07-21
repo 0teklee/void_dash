@@ -14,7 +14,7 @@ const nextConfig = {
   reactStrictMode: false,
   env: {
     DATABASE_URL: process.env.DATABASE_URL,
-    URL: process.env.URL,
+    NEXT_APP_URL: process.env.NEXT_APP_URL,
     NEXT_PUBLIC_SECRET: process.env.NEXT_PUBLIC_SECRET,
     CLOUDINARY_URL: process.env.CLOUDINARY_URL,
     CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY,
