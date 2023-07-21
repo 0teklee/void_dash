@@ -40,7 +40,7 @@ const Page = () => {
       className={`flex flex-col gap-3 justify-center items-center my-12 text-primary w-full h-full`}
     >
       <h1 className={`text-6xl font-semibold line-through`}>Members</h1>
-      <div className={`text-sm leading-none`}>
+      <div className={`text-10xs md:text-sm leading-none`}>
         <motion.div animate={controls} className={``}>
           <pre>
             <code>{ouroboro}</code>
