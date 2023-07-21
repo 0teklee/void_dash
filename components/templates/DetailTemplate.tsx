@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { IPostDataResponse } from "@/libs/types";
-import htmlParser from "@/libs/utils";
+import { IPostDetailResponse } from "@/libs/client/types";
+import htmlParser from "@/libs/client/utils";
 import CommentContainer from "@/components/modules/CommentContainer";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { SessionProvider } from "next-auth/react";
@@ -12,7 +12,7 @@ const DetailTemplate = ({
   data,
   searchParams,
 }: {
-  data: IPostDataResponse;
+  data: IPostDetailResponse;
   searchParams: string;
 }) => {
   const queryClient = new QueryClient();
