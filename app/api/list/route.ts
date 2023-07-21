@@ -3,6 +3,8 @@ import prisma from "@/prisma/prismaClient";
 
 export async function GET() {
   try {
+    console.log("posts ::", await prisma.post.findMany());
+
     const posts = await prisma.post.findMany({
       take: 20,
       where: {
@@ -14,6 +16,8 @@ export async function GET() {
         createdAt: "desc",
       },
     });
+
+    console.log("posts ::", posts);
 
     return new NextResponse(
       JSON.stringify({ message: "success", posts: posts }),
