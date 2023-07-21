@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { motion, useAnimationControls } from "framer-motion";
-import { ouroboro } from "@/libs/ascii";
-import { terms } from "@/libs/values";
+import { ouroboro } from "@/libs/client/ascii";
+import { terms } from "@/libs/client/values";
 
 const Page = () => {
   const [direction, setDirection] = useState(1);
@@ -31,7 +31,7 @@ const Page = () => {
   const login = async () => {
     await signIn("google", {
       redirect: true,
-      callbackUrl: `${process.env.URL}/`,
+      callbackUrl: `${process.env.NEXT_APP_URL}/`,
     });
   };
 
@@ -40,7 +40,7 @@ const Page = () => {
       className={`flex flex-col gap-3 justify-center items-center my-12 text-primary w-full h-full`}
     >
       <h1 className={`text-6xl font-semibold line-through`}>Members</h1>
-      <div className={`text-10xs leading-none`}>
+      <div className={`text-sm leading-none`}>
         <motion.div animate={controls} className={``}>
           <pre>
             <code>{ouroboro}</code>
