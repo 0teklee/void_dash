@@ -2,11 +2,15 @@ export interface IPostData {
   id: number;
   title: string;
   content: string;
-  createdAt: string;
-  category: string;
+  createdAt: string | Date;
+  category?: string;
   isPrivate?: boolean;
   private: boolean;
   viewCount: number;
+}
+
+export interface IPostDetailData extends IPostData {
+  createdAt: string;
 }
 
 export interface ICommentData {
@@ -28,6 +32,6 @@ export interface ICommentDataResponse {
   message: string;
 }
 
-export interface IPostDataResponse {
-  post: IPostData;
+export interface IPostDetailResponse {
+  post: IPostDetailData;
 }

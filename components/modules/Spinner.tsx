@@ -1,5 +1,5 @@
 import React from "react";
-import { twoSkulls } from "@/libs/ascii";
+import { twoSkulls } from "@/libs/client/ascii";
 
 const Spinner = () => {
   return (
