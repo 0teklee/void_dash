@@ -12,7 +12,7 @@ const getData = async (postId: string) => {
   return resData;
 };
 
-const DetailPage = async (props: {
+const Page = async (props: {
   params: {
     id: string;
   };
@@ -35,7 +35,7 @@ const DetailPage = async (props: {
   );
 };
 
-export default DetailPage;
+export default Page;
 
 export async function generateStaticParams() {
   const { posts } = await fetch(`${process.env.URL}/api/id-list`, {
