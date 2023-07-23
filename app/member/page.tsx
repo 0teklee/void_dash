@@ -37,11 +37,11 @@ const Page = () => {
 
   return (
     <div
-      className={`flex flex-col gap-3 justify-center items-center my-12 text-primary w-full h-full`}
+      className={`flex flex-col gap-3 justify-center items-center my-20 text-primary w-full h-full`}
     >
       <h1 className={`text-6xl font-semibold line-through`}>Members</h1>
-      <div className={`text-10xs md:text-sm leading-none`}>
-        <motion.div animate={controls} className={``}>
+      <div className={`text-10xs md:text-member-md`}>
+        <motion.div animate={controls} className={`leading-none`}>
           <pre>
             <code>{ouroboro}</code>
           </pre>
