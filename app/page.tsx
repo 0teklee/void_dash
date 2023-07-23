@@ -15,7 +15,7 @@ const Home = async () => {
         className={`mb-10 text-primary text-6xl font-bold`}
       >{`V̴O̴I̴D̴S̴̴ ̲&̲L̷I̷E̷S̷̴`}</h1>
       <section
-        className={`flex flex-wrap  justify-center md:justify-start items-start gap-4 max-w-12xl`}
+        className={`flex flex-wrap justify-center md:justify-start items-start gap-4 max-w-12xl`}
       >
         <Link href={`/board`}>
           <div className={`relative group-hover:opacity-100`}>
@@ -32,7 +32,7 @@ const Home = async () => {
           </div>
         </Link>
         <Ascii text={hundredEye} />
-        <Link href={`/member`}>
+        <Link className={`mt-5 mb-12`} href={`/member`}>
           <Image
             src="/sign.jpeg"
             alt="҉P҉a҉i҉n҉"
