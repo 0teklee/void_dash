@@ -19,7 +19,7 @@ export const getMainPageList = async (): Promise<{
     take: 20,
     where: {
       id: {
-        not: 9,
+        notIn: [1, 2, 3, 5, 9],
       },
     },
     orderBy: {
