@@ -19,15 +19,7 @@ interface IPostData {
 }
 
 const ListItem = ({ data }: { data: IPostData }) => {
-  const {
-    id,
-    title,
-    content,
-    createdAt,
-    category,
-    private: isPrivate,
-    viewCount,
-  } = data;
+  const { id, title, content, createdAt, private: isPrivate } = data;
 
   const hasImage = content.includes("cloudinary" || "img");
   const imgString = getContentImg(content);
