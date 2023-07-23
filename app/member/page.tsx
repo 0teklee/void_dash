@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { signIn, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import { motion, useAnimationControls } from "framer-motion";
 import { ouroboro } from "@/libs/client/ascii";
 import { terms } from "@/libs/client/values";
@@ -10,7 +10,6 @@ const Page = () => {
   const [agree, setAgree] = useState(false);
   const [isToggle, setIsToggle] = useState(false);
 
-  const { data: session, status } = useSession();
   const controls = useAnimationControls();
 
   useEffect(() => {
