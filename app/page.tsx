@@ -20,7 +20,7 @@ const Home = async () => {
         <Link href={`/board`}>
           <div className={`relative group-hover:opacity-100`}>
             <Image
-              src="/horror.png"
+              src="/horror.jpeg"
               alt="҉P҉a҉i҉n҉"
               width={400}
               height={300}

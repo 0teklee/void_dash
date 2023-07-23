@@ -18,7 +18,12 @@ export default function RootLayout({
           sizes="180x180"
           href="/apple-touch-icon.png"
         />
-        {/*<link rel="manifest" href="/site.webmanifest" />*/}
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:ur" content={`https://void-dash.vercel.app`} />
+        <meta name="twitter:image" content={`/horror.jpeg`} />
+        <meta name="twitter:image:alt" content={`__`} />
+        <meta name="twitter:creator" content="__kat" />
       </head>
 
       <body>{children}</body>
