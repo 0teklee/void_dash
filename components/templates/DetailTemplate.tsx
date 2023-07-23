@@ -18,10 +18,6 @@ const DetailTemplate = ({
   const queryClient = new QueryClient();
   const router = useRouter();
 
-  // if (id === 9) {
-  //   router.push("/");
-  // }
-
   return (
     <div
       className={`flex flex-col items-start md:items-start mt-12 mx-auto p-9 md:p-10 text-primary gap-9`}
