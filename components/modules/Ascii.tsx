@@ -3,9 +3,9 @@ import React from "react";
 const Ascii = ({ text, color }: { text: string; color?: string }) => {
   return (
     <div
-      className={`relative w-fit max-w-2xl h-full m-2 ${
+      className={`relative mt-12 w-screen sm:w-fit h-full m-2 ${
         color || `text-primary`
-      } text-[5px] sm:text-[6px] font-light leading-none`}
+      }  text-[1px] md:text-md font-light leading-none`}
     >
       <pre>
         <code>{text}</code>
