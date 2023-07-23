@@ -133,8 +133,13 @@ a {
 }
 
 .text-10xs {
+  font-size: 4px;
+  letter-spacing: -0.4px;
+}
+
+.text-member-md {
   font-size: 0.1px;
-  letter-spacing: -1px;
+  letter-spacing: -2px;
 }
 
 .googleBlack div  div  iframe div {
