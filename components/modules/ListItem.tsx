@@ -36,7 +36,7 @@ const ListItem = ({ data }: { data: IPostData }) => {
 
   return (
     <div
-      className={`relative w-[300px] h-[424px] overflow-hidden truncate text-primary`}
+      className={`relative w-[300px] sm:h-[424px] min-h-[250px] overflow-ellipsis line-clamp-6 text-primary`}
     >
       {!isPrivate && hasImage && imgString && (
         <div
