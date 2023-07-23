@@ -6,7 +6,6 @@ import htmlParser from "@/libs/client/utils";
 import CommentContainer from "@/components/modules/CommentContainer";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { SessionProvider } from "next-auth/react";
-import { useRouter } from "next/navigation";
 
 const DetailTemplate = ({
   data,
@@ -16,7 +15,6 @@ const DetailTemplate = ({
   searchParams: string;
 }) => {
   const queryClient = new QueryClient();
-  const router = useRouter();
 
   return (
     <div
