@@ -33,14 +33,24 @@ export const authOptions: AuthOptions = {
       return token;
     },
     async session({ session }) {
-      const userId = await prisma.guest.findUnique({
+      const userId = await prisma.guest.upsert({
         where: {
           email: session.user?.email as string,
+        },
+        create: {
+          email: session.user?.email as string,
+          name: session.user?.name as string,
+        },
+        update: {
+          email: session.user?.email as string,
+          name: session.user?.name as string,
         },
         select: {
           id: true,
         },
       });
+
+      console.log("userId >>>>>", userId);
       return { ...session, userId: userId?.id };
     },
   },
