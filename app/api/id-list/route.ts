@@ -14,7 +14,6 @@ export async function GET() {
         id: String(post.id),
       };
     });
-    console.log("2 id-list.ts: ", retunPosts);
 
     return new NextResponse(
       JSON.stringify({ message: "success", posts: retunPosts }),

@@ -50,7 +50,6 @@ export const authOptions: AuthOptions = {
         },
       });
 
-      console.log("userId >>>>>", userId);
       return { ...session, userId: userId?.id };
     },
   },

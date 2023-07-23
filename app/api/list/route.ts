@@ -17,8 +17,6 @@ export async function GET() {
       },
     });
 
-    console.log("posts ::", posts);
-
     return new NextResponse(
       JSON.stringify({ message: "success", posts: posts }),
       { status: 200, statusText: "OK" },

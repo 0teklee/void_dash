@@ -2,8 +2,6 @@ import { NextResponse } from "next/server";
 import prisma from "@/prisma/prismaClient";
 
 export async function GET(req: Request) {
-  console.log("postId", req);
-
   try {
     const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");
