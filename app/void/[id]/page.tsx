@@ -82,15 +82,15 @@ export async function generateMetadata(props: { params: { id: string } }) {
     return notFound();
   }
 
-  const ImageSrc = getContentImg(data?.post.content) ?? `/sign.jpegs`;
+  const ImageSrc = getContentImg(data?.post?.content) ?? `/sign.jpegs`;
   const SEOImage = ImageSrc?.substring(1, ImageSrc.length);
 
   return {
-    title: data.post.title,
-    description: data.post.content,
+    title: data?.post?.title,
+    description: htmlReplace(data?.post?.content)?.slice(0, 150) || "",
     openGraph: {
-      title: data.post.title,
-      description: data.post.content,
+      title: data?.post?.title,
+      description: htmlReplace(data?.post?.content)?.slice(0, 150) || "",
       images: SEOImage,
     },
   };
