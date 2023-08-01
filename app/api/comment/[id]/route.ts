@@ -61,7 +61,7 @@ export const GET = async (req: NextRequest, res: Response) => {
       if (comment.isPrivate && (!userAuth || comment?.guest?.id !== userId)) {
         comment = {
           ...comment,
-          content: "This is a private comment 🔒",
+          content: "",
           nickname: "anonymous",
         };
       }
