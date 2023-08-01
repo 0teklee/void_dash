@@ -3,11 +3,11 @@ import prisma from "@/prisma/prismaClient";
 
 export async function GET(req: Request) {
   try {
-    const { searchParams } = new URL(req.url);
-    const id = searchParams.get("id");
+    const pathname = new URL(req.url).pathname.split("/");
+    const id = Number(pathname[pathname.length - 1]);
     const post = await prisma.post.update({
       where: {
-        id: Number(id),
+        id,
       },
       data: {
         viewCount: {
@@ -30,7 +30,7 @@ export async function GET(req: Request) {
 
     return res;
   } catch (err) {
-    console.log("list.ts error: ", err);
+    console.log("post detail error: ", err);
     return new NextResponse(
       JSON.stringify({ message: "fail", errorCode: 404 }),
       {
