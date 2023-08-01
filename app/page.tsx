@@ -2,12 +2,24 @@ import Image from "next/image";
 import { hundredEye, twoSkulls } from "@/libs/client/ascii";
 import Ascii from "@/components/modules/Ascii";
 import Link from "next/link";
-import { getMainPageList } from "@/libs/server/listApi";
 import ListItem from "@/components/modules/ListItem";
 import { IPostData } from "@/libs/client/types";
 
+const getList = async () => {
+  try {
+    const res = await fetch(`${process.env.NEXT_APP_URL}/api/list`, {
+      method: "GET",
+    });
+    const resJson = await res.json();
+    return resJson;
+  } catch (err) {
+    console.log("in fetch getList err", err);
+    return err;
+  }
+};
+
 const Home = async () => {
-  const data = await getMainPageList();
+  const data = await getList();
 
   return (
     <main className={`w-full h-screen bg-black  p-9 md:p-10`}>
