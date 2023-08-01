@@ -3,24 +3,20 @@ import prisma from "@/prisma/prismaClient";
 
 export async function GET() {
   try {
-    console.log("posts ::", await prisma.post.findMany());
-
     const posts = await prisma.post.findMany({
       take: 20,
       where: {
         id: {
           not: 9,
         },
+        private: false,
       },
       orderBy: {
         createdAt: "desc",
       },
     });
 
-    return new NextResponse(
-      JSON.stringify({ message: "success", posts: posts }),
-      { status: 200, statusText: "OK" },
-    );
+    return NextResponse.json({ message: "success", posts: posts });
   } catch (err) {
     console.log("main page list.ts error: ", err);
     return new NextResponse(JSON.stringify({ message: "fail" }), {
