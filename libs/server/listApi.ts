@@ -1,5 +1,4 @@
 import prisma from "@/prisma/prismaClient";
-import { IPostData } from "@/libs/client/types";
 
 export const getAllPostId = async (): Promise<{
   postsId: { id: number }[];
@@ -10,29 +9,4 @@ export const getAllPostId = async (): Promise<{
     },
   });
   return { postsId };
-};
-
-export const getMainPageList = async (): Promise<{
-  posts: IPostData[];
-}> => {
-  const posts = await prisma.post.findMany({
-    take: 20,
-    where: {
-      id: {
-        notIn: [1, 2, 3, 5, 9],
-      },
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
-    select: {
-      id: true,
-      title: true,
-      content: true,
-      createdAt: true,
-      private: true,
-      viewCount: true,
-    },
-  });
-  return { posts };
 };
