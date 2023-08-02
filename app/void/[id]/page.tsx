@@ -33,7 +33,6 @@ const Page = async (props: {
   return (
     <>
       <Head>
-        <meta></meta>
         <title>{data?.post?.title || `VOID_${props.params.id}`}</title>
         <meta
           property="og:title"
@@ -46,7 +45,7 @@ const Page = async (props: {
         />
         <meta
           property="og:image"
-          content={getContentImg(data?.post?.content) || `/horror.jpg`}
+          content={getContentImg(data?.post?.content) || `/card.JPG`}
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta
@@ -55,7 +54,7 @@ const Page = async (props: {
         />
         <meta
           name="twitter:image"
-          content={getContentImg(data?.post?.content) || `/horror.jpg`}
+          content={getContentImg(data?.post?.content) || `/card.JPG`}
         />
         <meta name="twitter:image:alt" content={`void`} />
         <meta
@@ -98,7 +97,7 @@ export async function generateMetadata(props: { params: { id: string } }) {
     openGraph: {
       title: data?.post?.title,
       description: htmlReplace(data?.post?.content)?.slice(0, 150) || "",
-      images: SEOImage,
+      images: ImageSrc,
     },
   };
 }
