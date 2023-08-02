@@ -26,7 +26,7 @@ const DetailTemplate = ({
             <h1 className={`text-5xl font-semibold`}>{data.post.title}</h1>
             <p className={`text-sm font-normal`}>{data.post.createdAt}</p>
           </div>
-          <div className={`mb-32 text-xl break-all`}>
+          <div className={`mb-32 text-xl break-all max-w-3xl`}>
             {htmlParser(data.post.content)}
           </div>
         </>
