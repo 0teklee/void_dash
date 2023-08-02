@@ -24,11 +24,9 @@ export async function GET(req: Request) {
       },
     });
 
-    const res = NextResponse.json({
+    return NextResponse.json({
       post: { ...post, createdAt: post.createdAt.toISOString() },
     });
-
-    return res;
   } catch (err) {
     console.log("post detail error: ", err);
     return new NextResponse(
