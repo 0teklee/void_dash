@@ -9,6 +9,9 @@ const getList = async () => {
   try {
     const res = await fetch(`${process.env.NEXT_APP_URL}/api/list`, {
       method: "GET",
+      next: {
+        revalidate: 600,
+      },
     });
     const resJson = await res.json();
     return resJson;
