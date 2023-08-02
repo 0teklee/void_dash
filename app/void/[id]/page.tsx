@@ -1,15 +1,22 @@
 import React from "react";
 import Header from "@/components/modules/Header";
 import DetailTemplate from "@/components/templates/DetailTemplate";
-import { getAllPostId } from "@/libs/server/listApi";
-import { notFound } from "next/navigation";
+import { getAllPostId, getPostData } from "@/libs/server/postPrismaApi";
 import { getContentImg, htmlReplace } from "@/utils/formatter";
 import Head from "next/head";
 
-const getDetailPost = async (id: string) => {
-  const data = await fetch(`${process.env.NEXT_APP_URL}/api/post/${id}`);
-  return await data.json();
-};
+// const getDetailPost = async (id: string) => {
+//   try {
+//     const data = await fetch(`${process.env.NEXT_APP_URL}/api/post/${id}`, {
+//       method: "GET",
+//     });
+//     const resJson = await data.json();
+//     return resJson;
+//   } catch (err) {
+//     console.error("in fetch getDetailPost err", err);
+//     return err;
+//   }
+// };
 
 const Page = async (props: {
   params: {
@@ -21,7 +28,7 @@ const Page = async (props: {
   }
 
   const postId = props.params.id as string;
-  const data = await getDetailPost(postId);
+  const data = await getPostData(Number(postId));
 
   return (
     <>
@@ -77,9 +84,9 @@ export const generateStaticParams = async () => {
 };
 
 export async function generateMetadata(props: { params: { id: string } }) {
-  const data = await getDetailPost(props?.params?.id);
+  const data = await getPostData(Number(props?.params?.id));
   if (!data) {
-    return notFound();
+    return null;
   }
 
   const ImageSrc = getContentImg(data?.post?.content) ?? `/sign.jpegs`;
