@@ -8,7 +8,7 @@ const getContentImg = (content: string): string | undefined => {
       .map((x: string) => x.replace(/.*src="([^"]*)".*/, "$1"))[0]
       .replace("http", "https")
       .replace("httpss", "https");
-  return contentImg || undefined;
+  return contentImg || "/card.JPG";
 };
 
 const htmlReplace = (html: string): string => {
